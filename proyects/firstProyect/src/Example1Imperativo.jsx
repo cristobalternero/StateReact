@@ -25,6 +25,5 @@ root.render(
     <Button text="Button 1"/>
     <Button text="Button 2"/>
     <Button text="Button 3"/>
-    <></>
   </React.Fragment>
 )
