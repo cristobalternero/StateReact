@@ -1,7 +1,7 @@
 
 import { useState } from "react" // importar utilidad, HOOKS!!! son la vida
 
-export function TwitterFollowCard ({ formatUserName, userName, name, initialIsFollowing }){
+export function TwitterFollowCard ({ children, userName, initialIsFollowing }){
     /* const imageSrc = `https://unavatar.io/${userName}`  === las dos opciones sirven*/
 
     
@@ -16,12 +16,15 @@ export function TwitterFollowCard ({ formatUserName, userName, name, initialIsFo
     console.log(('[App] render with isFollowing: ', isFollowing))
 
     const text = isFollowing ? 'Siguiendo' : 'Seguir'
+    
+
     const buttonClassName = isFollowing ? 'tw-followCard-button is-following' : 'tw-followCard-button'
 
 
     const handleClick = () => {
         setIsFollowing(!isFollowing)
     }
+
 
     /* const addAt = (userName) => `@${userName}` */
 
@@ -33,14 +36,15 @@ export function TwitterFollowCard ({ formatUserName, userName, name, initialIsFo
                     alt="foto1" 
                     src= {`https://unavatar.io/${userName}`} />
                 <div className='tw-followCard-info'>
-                    <strong>{name}</strong>
-                    <span className='tw-followCard-infoUserName'>{formatUserName(userName)}</span>  {/* {addAt(userName)} */}
+                    <strong>{children}</strong>
+                    <span className='tw-followCard-infoUserName'>@{userName}</span>  {/* {addAt(userName)} */}
                 </div>
             </header>
 
             <aside>
                 <button className={buttonClassName} onClick={handleClick}>
-                    {text}
+                    <span className='tw-followCard-text'>{text}</span>
+                    <span className='tw-followCard-stopFollow'>Dejar de seguir</span>
                 </button>
             </aside>
         </article>
